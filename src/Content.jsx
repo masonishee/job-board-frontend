@@ -38,12 +38,29 @@ export function Content() {
     });
   };
 
+  const handleUpdateJob = (id, params, successCallback) => {
+    console.log("handleUpdateJob", params);
+    axios.patch(`http://localhost:3000/photos/${id}.json`, params).then((response) => {
+      setJobs(
+        jobs.map((job) => {
+          if (job.id === response.data.id) {
+            return response.data;
+          } else {
+            return job;
+          }
+        })
+      );
+      successCallback();
+      handleClose();
+    });
+  };
+
   return (
     <div>
-      <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
       <JobsNew onCreateJob={handleCreateJob} />
+      <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
       <Modal show={isJobsShowVisible} onClose={handleClose}>
-        <JobsShow job={currentJob} />
+        <JobsShow job={currentJob} onUpdateJob={handleUpdateJob} />
       </Modal>
     </div>
   );
