@@ -4,6 +4,10 @@ import { JobsIndex } from "./JobsIndex";
 import { Modal } from "./Modal";
 import { JobsShow } from "./JobsShow";
 import { JobsNew } from "./JobsNew";
+import { Routes, Route } from "react-router-dom";
+import { Signup } from "./Signup";
+import { Login } from "./Login";
+import { LogoutLink } from "./LogoutLink";
 
 export function Content() {
   const [jobs, setJobs] = useState([]);
@@ -65,6 +69,11 @@ export function Content() {
 
   return (
     <div>
+      <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<LogoutLink />} />
+      </Routes>
       <JobsNew onCreateJob={handleCreateJob} />
       <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
       <Modal show={isJobsShowVisible} onClose={handleClose}>
