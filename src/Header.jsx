@@ -11,7 +11,7 @@ export function Header() {
       </nav>
       <Signup />
       <Login />
-      <LogoutLink />
+      {/* <LogoutLink /> */}
     </header>
   );
 }
