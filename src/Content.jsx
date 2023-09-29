@@ -73,8 +73,8 @@ export function Content() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
+        <Route path="/jobsnew" element={<JobsNew />} onCreateJob={handleCreateJob} />
       </Routes>
-      <JobsNew onCreateJob={handleCreateJob} />
       <JobsIndex jobs={jobs} onShowJob={handleShowJob} />
       <Modal show={isJobsShowVisible} onClose={handleClose}>
         <JobsShow job={currentJob} onUpdateJob={handleUpdateJob} onDestroyJob={handleDestroyJob} />
