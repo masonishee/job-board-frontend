@@ -34,18 +34,28 @@ export function JobsIndex(props) {
 
   const fakeJobData = [fakeJobData1, fakeJobData2, fakeJobData3];
   return (
-    <div>
-      <h1 className="text-2xl text-blue-500">All jobs</h1>
+    <div className="bg-gray-100 py-8 px-4">
+      <h1 className="text-3xl font-semibold text-blue-500 mb-8">All Jobs</h1>
       {fakeJobData.map((job) => (
-        <div key={job.id}>
-          <p>Company: {job.company}</p>
-          <p>Title: {job.title}</p>
-          <p>Description: {job.description}</p>
-          <p>Url: {job.url}</p>
-          <p>Location: {job.location}</p>
-          <p>Active: {job.active ? "Yes" : "No"}</p>
-          <p>Salary: ${job.salary} per year</p>
-          <button onClick={() => props.onShowJob(job)}>More info</button>
+        <div key={job.id} className="bg-white p-6 rounded-lg shadow-md mb-4">
+          <p className="text-lg font-semibold text-gray-800">Company: {job.company}</p>
+          <p className="text-md text-gray-600">Title: {job.title}</p>
+          <p className="text-md text-gray-600">Description: {job.description}</p>
+          <p className="text-md text-blue-500 hover:underline">
+            URL:{" "}
+            <a href={job.url} target="_blank" rel="noopener noreferrer">
+              {job.url}
+            </a>
+          </p>
+          <p className="text-md text-gray-600">Location: {job.location}</p>
+          <p className="text-md text-gray-600">Active: {job.active ? "Yes" : "No"}</p>
+          <p className="text-md text-gray-600">Salary: ${job.salary} per year</p>
+          <button
+            onClick={() => props.onShowJob(job)}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors focus:outline-none focus:ring focus:ring-blue-300"
+          >
+            More Info
+          </button>
         </div>
       ))}
     </div>
